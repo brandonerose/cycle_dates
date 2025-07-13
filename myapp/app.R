@@ -76,8 +76,8 @@ ui <- fluidPage(
       )
     ),
     mainPanel(
-      verbatimTextOutput("cycle_text"),
-      verbatimTextOutput("cycle_text2")
+      verbatimTextOutput("cycle_text2"),
+      verbatimTextOutput("cycle_text")
     )
   ),
   tags$footer(strong("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."), # strong() = bold
