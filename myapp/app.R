@@ -77,7 +77,8 @@ ui <- fluidPage(
     ),
     mainPanel(
       verbatimTextOutput("cycle_text2"),
-      verbatimTextOutput("cycle_text")
+      verbatimTextOutput("cycle_text"),
+      uiOutput("overall")
     )
   ),
   tags$footer(strong("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."), # strong() = bold
@@ -127,6 +128,13 @@ server <- function(input, output, session) {
       collapse = ", "
     ))
     text_lines
+  })
+  output$overall <- renderUI({
+    days <- input$cycle_number * input$cycle_length
+    weeks <- days/7
+    months <- weeks/4
+    text_out <- paste0("The overall regimen spans ",days," days. This is ",weeks," weeks or ",months," months.")
+    p(text_out)
   })
 }
 
