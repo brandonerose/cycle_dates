@@ -36,9 +36,9 @@ pretty_date <- function(date, include_year = TRUE) {
 
 # UI
 ui <- fluidPage(
-  titlePanel(
-    h1("Chemo Cycle Date Generator", align = "center")
-  ),
+  # titlePanel(
+  #   h1("Chemo Cycle Date Generator", align = "center")
+  # ),
   sidebarLayout(
     sidebarPanel(
       dateInput("start_date", "Start Date", value = Sys.Date()),
