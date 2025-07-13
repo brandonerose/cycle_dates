@@ -35,49 +35,49 @@ pretty_date <- function(date, include_year = TRUE) {
 }
 
 # UI
-ui <- fluidPage(titlePanel("Chemo Cycle Date Generator"),
-                sidebarLayout(
-                  sidebarPanel(
-                    dateInput("start_date", "Start Date", value = Sys.Date()),
-                    numericInput(
-                      inputId = "cycle_number",
-                      label = "Number of Cycles",
-                      value = 6,
-                      min = 1
-                    ),
-                    numericInput(
-                      inputId = "cycle_length",
-                      label = "Cycle Length (days)",
-                      value = 14,
-                      min = 7,
-                      step = 7
-                    ),
-                    selectInput(
-                      inputId = "week_start",
-                      label = "Align to Weekday?",
-                      choices = c(
-                        "None" = NA,
-                        Monday = 1,
-                        Tuesday = 2,
-                        Wednesday = 3,
-                        Thursday = 4,
-                        Friday = 5,
-                        Saturday = 6,
-                        Sunday = 7
-                      ),
-                      selected = NA
-                    ),
-                    checkboxInput(
-                      inputId = "include_year",
-                      label = "Include Year?"
-                    )
-                  ),
-                  mainPanel(
-                    p("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."),
-                    verbatimTextOutput("cycle_text"),
-                    verbatimTextOutput("cycle_text2")
-                  )
-                ))
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      dateInput("start_date", "Start Date", value = Sys.Date()),
+      numericInput(
+        inputId = "cycle_number",
+        label = "Number of Cycles",
+        value = 6,
+        min = 1
+      ),
+      numericInput(
+        inputId = "cycle_length",
+        label = "Cycle Length (days)",
+        value = 14,
+        min = 7,
+        step = 7
+      ),
+      selectInput(
+        inputId = "week_start",
+        label = "Align to Weekday?",
+        choices = c(
+          "None" = NA,
+          Monday = 1,
+          Tuesday = 2,
+          Wednesday = 3,
+          Thursday = 4,
+          Friday = 5,
+          Saturday = 6,
+          Sunday = 7
+        ),
+        selected = NA
+      ),
+      checkboxInput(
+        inputId = "include_year",
+        label = "Include Year?"
+      )
+    ),
+    mainPanel(
+      p("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."),
+      verbatimTextOutput("cycle_text"),
+      verbatimTextOutput("cycle_text2")
+    )
+  ))
 
 # Server
 server <- function(input, output, session) {
