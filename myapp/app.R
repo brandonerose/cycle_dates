@@ -36,6 +36,9 @@ pretty_date <- function(date, include_year = TRUE) {
 
 # UI
 ui <- fluidPage(
+  titlePanel(
+    h1("Chemo Cycle Date Generator", align = "center")
+  ),
   sidebarLayout(
     sidebarPanel(
       dateInput("start_date", "Start Date", value = Sys.Date()),
@@ -73,11 +76,22 @@ ui <- fluidPage(
       )
     ),
     mainPanel(
-      p("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."),
       verbatimTextOutput("cycle_text"),
       verbatimTextOutput("cycle_text2")
     )
-  ))
+  ),
+  tags$footer(strong("Written by Brandon Rose, MD, MPH using R, shiny, shinylive, and WebR."), # strong() = bold
+              align = "center",
+              style = "
+                 position:center;
+                 bottom:11.5px;
+                 width:100%;
+                 height:20px;
+                 color: black;
+                 padding: 0px;
+                 z-index: 100;
+                ")
+)
 
 # Server
 server <- function(input, output, session) {
